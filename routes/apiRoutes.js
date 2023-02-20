@@ -18,10 +18,8 @@ const createNote = (body, notesArray) => {
         notesArray = [];
     if (notesArray.length === 0)
         notesArray.push(0);
-
     body.id = notesArray.length;
     notesArray.push(newNote);
-
     fs.writeFileSync(
         path.join(__dirname, '../db/db.json'),
         JSON.stringify(notesArray, null, 2)
