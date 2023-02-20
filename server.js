@@ -8,6 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+// use these routes for api and html
 app.use(routes)
 
 // listen on port 3001

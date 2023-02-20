@@ -8,31 +8,33 @@ router.get('/notes', (req, res) => {
 });
 
 router.post('/notes', (req, res) => {
-    const newNote = createNote(req.body, dataBase)
+    const newNote = postNote(req.body, dataBase);
     res.json(newNote);
-})
+});
 
-const createNote = (body, notesArray) => {
+const postNote = (body, notesArray) => {
     const newNote = body;
-    if (!notesArray)
+    if (!notesArray) {
         notesArray = [];
-    if (notesArray.length === 0)
+    };
+    if (notesArray.length === 0) {
         notesArray.push(0);
+    };
     body.id = notesArray.length;
     notesArray.push(newNote);
     fs.writeFileSync(
         path.join(__dirname, '../db/db.json'),
         JSON.stringify(notesArray, null, 2)
-    );
+        );
     return newNote;
 };
 
 router.delete('/notes/:id', (req, res) => {
     deleteNote(req.params.id, dataBase);
     res.json(true);
-})
+});
 
-// For deleting notes 
+// Delete notes from db.json using fs.writeFileSync
 const deleteNote = (id, notesArray) => {
     for (let i = 0; i < notesArray.length; i++) {
         let note = notesArray[i];
@@ -43,8 +45,8 @@ const deleteNote = (id, notesArray) => {
                 JSON.stringify(notesArray, null, 2)
             );
             break;
-        }
-    }
+        };
+    };
 };
 
 module.exports = router;
