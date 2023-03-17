@@ -19,7 +19,9 @@ The purpose of this project was to create a note-taking application. The applica
 
 
 
-demo video
+
+https://user-images.githubusercontent.com/111160410/225807063-603ba964-4364-455d-a6d7-362d4730e35b.mp4
+
 
 
 
